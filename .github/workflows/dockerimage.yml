@@ -5,12 +5,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: Log in to Docker Hub
-      uses: actions/docker/login@master
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-    - name: Build Docker image
-      run: docker build --tag junitteam/build:latest --tag junitteam/build:$(date +%s) .
-    - name: Push Docker image
-      run: docker push junitteam/build
+    - name: Build Docker image and publish to Docker Hub
+      uses: elgohr/Publish-Docker-Github-Action@e0635c0
+      with:
+        name: junitteam/build
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        snapshot: true
