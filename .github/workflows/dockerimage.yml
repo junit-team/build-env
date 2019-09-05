@@ -8,8 +8,8 @@ jobs:
     - name: Log in to Docker Hub
       uses: actions/docker/login@master
       env:
-      - DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      - DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
     - name: Build Docker image
       run: docker build --tag junitteam/build:latest --tag junitteam/build:$(date +%s) .
     - name: Push Docker image
