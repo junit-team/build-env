@@ -25,8 +25,9 @@ RUN bash -c ". $SDKMAN_DIR/bin/sdkman-init.sh \
 ENV JDK8=$SDKMAN_DIR/candidates/java/8.0.222.hs-adpt \
     JDK12=$SDKMAN_DIR/candidates/java/12.0.2-open \
     JDK13=$SDKMAN_DIR/candidates/java/13.ea.33-open \
-    JDK14=$SDKMAN_DIR/candidates/java/14.ea.11-open \
-    JAVA_HOME=$JDK12 \
+    JDK14=$SDKMAN_DIR/candidates/java/14.ea.11-open
+
+ENV JAVA_HOME=$JDK12 \
     PATH="$JDK12/bin:${PATH}"
 
 # Warm up Gradle caches
