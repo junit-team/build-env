@@ -5,7 +5,7 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 ENV SDKMAN_DIR=/root/.sdkman
 
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl zip unzip git openssl ca-certificates locales \
+    && apt-get install -y --no-install-recommends curl zip unzip git python openssl ca-certificates locales \
     && echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen \
     && locale-gen en_US.UTF-8 \
     && rm -rf /var/lib/apt/lists/* \
