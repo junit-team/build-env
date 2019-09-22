@@ -17,14 +17,14 @@ RUN apt-get update \
 RUN bash -c ". $SDKMAN_DIR/bin/sdkman-init.sh \
     && sdk install java 8.0.222.hs-adpt \
     && sdk install java 12.0.2-open \
-    && sdk install java 13.ea.33-open \
+    && sdk install java 13.0.0-open \
     && sdk install java 14.ea.14-open \
     && sdk flush archives \
     && sdk flush temp"
 
 ENV JDK8=$SDKMAN_DIR/candidates/java/8.0.222.hs-adpt \
     JDK12=$SDKMAN_DIR/candidates/java/12.0.2-open \
-    JDK13=$SDKMAN_DIR/candidates/java/13.ea.33-open \
+    JDK13=$SDKMAN_DIR/candidates/java/13.0.0-open \
     JDK14=$SDKMAN_DIR/candidates/java/14.ea.14-open
 
 ENV JAVA_HOME=$JDK12 \
