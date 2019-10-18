@@ -1,5 +1,7 @@
 FROM debian:buster
 
+ENTRYPOINT bash
+
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 ENV SDKMAN_DIR=/root/.sdkman
@@ -14,28 +16,25 @@ RUN apt-get update \
     && echo "sdkman_auto_selfupdate=false" >> $SDKMAN_DIR/etc/config \
     && echo "sdkman_insecure_ssl=true" >> $SDKMAN_DIR/etc/config
 
+ARG JDK8_VERSION=8.0.222.hs-adpt
+ARG DEFAULT_JDK_VERSION=11.0.4.hs-adpt
+
 RUN bash -c ". $SDKMAN_DIR/bin/sdkman-init.sh \
-    && sdk install java 8.0.222.hs-adpt \
-    && sdk install java 12.0.2-open \
-    && sdk install java 13.0.0-open \
-    && sdk install java 14.ea.17-open \
+    && sdk install java $JDK8_VERSION \
+    && sdk install java $DEFAULT_JDK_VERSION \
     && sdk flush archives \
     && sdk flush temp"
 
-ENV JDK8=$SDKMAN_DIR/candidates/java/8.0.222.hs-adpt \
-    JDK12=$SDKMAN_DIR/candidates/java/12.0.2-open \
-    JDK13=$SDKMAN_DIR/candidates/java/13.0.0-open \
-    JDK14=$SDKMAN_DIR/candidates/java/14.ea.17-open
+ENV JDK8=$SDKMAN_DIR/candidates/java/$JDK8_VERSION \
+    JAVA_HOME=$SDKMAN_DIR/candidates/java/$DEFAULT_JDK_VERSION \
+    PATH="$JAVA_HOME/bin:${PATH}"
 
-ENV JAVA_HOME=$JDK12 \
-    PATH="$JDK12/bin:${PATH}"
+ARG ADDITIONAL_JDK_VERSION=$DEFAULT_JDK_VERSION
 
-# Warm up Gradle caches
-RUN cd /tmp \
-    && git clone --depth 1 https://github.com/junit-team/junit5.git \
-    && cd /tmp/junit5 \
-    && ./gradlew build -x test \
-    && cd .. \
-    && rm -rf junit5
+RUN bash -c ". $SDKMAN_DIR/bin/sdkman-init.sh \
+    && sdk install java $ADDITIONAL_JDK_VERSION \
+    && sdk default java $DEFAULT_JDK_VERSION \
+    && sdk flush archives \
+    && sdk flush temp"
 
-ENTRYPOINT bash
+ENV ADDITIONAL_JDK=$SDKMAN_DIR/candidates/java/$ADDITIONAL_JDK_VERSION
