@@ -32,7 +32,7 @@ jobs:
     - name: JDK 14
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
-        ADDITIONAL_JDK_VERSION: 14.ea.20-open
+        ADDITIONAL_JDK_VERSION: 14.ea.25-open
       with:
         name: junitteam/build:14
         username: ${{ secrets.DOCKER_USERNAME }}
