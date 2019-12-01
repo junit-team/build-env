@@ -28,13 +28,3 @@ RUN bash -c ". $SDKMAN_DIR/bin/sdkman-init.sh \
 ENV JDK8=$SDKMAN_DIR/candidates/java/$JDK8_VERSION \
     JAVA_HOME=$SDKMAN_DIR/candidates/java/$DEFAULT_JDK_VERSION \
     PATH="$JAVA_HOME/bin:${PATH}"
-
-ARG ADDITIONAL_JDK_VERSION=$DEFAULT_JDK_VERSION
-
-RUN bash -c ". $SDKMAN_DIR/bin/sdkman-init.sh \
-    && sdk install java $ADDITIONAL_JDK_VERSION \
-    && sdk default java $DEFAULT_JDK_VERSION \
-    && sdk flush archives \
-    && sdk flush temp"
-
-ENV ADDITIONAL_JDK=$SDKMAN_DIR/candidates/java/$ADDITIONAL_JDK_VERSION
