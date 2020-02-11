@@ -15,7 +15,7 @@ jobs:
     - name: JDK 12
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
-        ADDITIONAL_JDK_VERSION: 12.0.2-open
+        ADDITIONAL_JDK_VERSION: 12.0.2.hs-adpt
       with:
         name: junitteam/build:12
         username: ${{ secrets.DOCKER_USERNAME }}
@@ -25,7 +25,7 @@ jobs:
     - name: JDK 13
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
-        ADDITIONAL_JDK_VERSION: 13.0.1-open
+        ADDITIONAL_JDK_VERSION: 13.0.2.hs-adpt
       with:
         name: junitteam/build:13
         username: ${{ secrets.DOCKER_USERNAME }}
@@ -35,7 +35,7 @@ jobs:
     - name: JDK 14
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
-        ADDITIONAL_JDK_VERSION: 14.ea.33-open
+        ADDITIONAL_JDK_VERSION: 14.ea.34-open
       with:
         name: junitteam/build:14
         username: ${{ secrets.DOCKER_USERNAME }}
@@ -45,7 +45,7 @@ jobs:
     - name: JDK 15
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
-        ADDITIONAL_JDK_VERSION: 15.ea.7-open
+        ADDITIONAL_JDK_VERSION: 15.ea.8-open
       with:
         name: junitteam/build:15
         username: ${{ secrets.DOCKER_USERNAME }}
