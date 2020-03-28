@@ -12,26 +12,6 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         workdir: base
-    - name: JDK 12
-      uses: elgohr/Publish-Docker-Github-Action@cade1bc
-      env:
-        ADDITIONAL_JDK_VERSION: 12.0.2.hs-adpt
-      with:
-        name: junitteam/build:12
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: extended
-        buildargs: ADDITIONAL_JDK_VERSION
-    - name: JDK 13
-      uses: elgohr/Publish-Docker-Github-Action@cade1bc
-      env:
-        ADDITIONAL_JDK_VERSION: 13.0.2.hs-adpt
-      with:
-        name: junitteam/build:13
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: extended
-        buildargs: ADDITIONAL_JDK_VERSION
     - name: JDK 14
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
