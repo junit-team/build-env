@@ -25,7 +25,7 @@ jobs:
     - name: JDK 15
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
-        ADDITIONAL_JDK_VERSION: 15.ea.27-open
+        ADDITIONAL_JDK_VERSION: 15.ea.30-open
       with:
         name: junitteam/build:15
         username: ${{ secrets.DOCKER_USERNAME }}
@@ -35,7 +35,7 @@ jobs:
     - name: JDK 16
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
-        ADDITIONAL_JDK_VERSION: 16.ea.2-open
+        ADDITIONAL_JDK_VERSION: 16.ea.4-open
       with:
         name: junitteam/build:16
         username: ${{ secrets.DOCKER_USERNAME }}
