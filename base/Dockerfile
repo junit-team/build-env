@@ -25,6 +25,7 @@ RUN bash -c ". $SDKMAN_DIR/bin/sdkman-init.sh \
     && sdk flush archives \
     && sdk flush temp"
 
-ENV JDK8=$SDKMAN_DIR/candidates/java/$JDK8_VERSION \
+ENV SDKMAN_CANDIDATES_DIR=$SDKMAN_DIR/candidates \
+    JDK8=$SDKMAN_DIR/candidates/java/$JDK8_VERSION \
     JAVA_HOME=$SDKMAN_DIR/candidates/java/$DEFAULT_JDK_VERSION \
     PATH="$JAVA_HOME/bin:${PATH}"
