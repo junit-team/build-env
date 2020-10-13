@@ -8,17 +8,19 @@ jobs:
     - name: JDK 15 (Default)
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       with:
-        name: junitteam/build:latest
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        name: junit-team/build:latest
+        registry: ghcr.io
+        username: junit-buildmaster
+        password: ${{ secrets.CR_PAT }}
         workdir: base
     - name: JDK 16
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
         ADDITIONAL_JDK_VERSION: 16.ea.19-open
       with:
-        name: junitteam/build:16
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        name: junit-team/build:16
+        registry: ghcr.io
+        username: junit-buildmaster
+        password: ${{ secrets.CR_PAT }}
         workdir: extended
         buildargs: ADDITIONAL_JDK_VERSION
