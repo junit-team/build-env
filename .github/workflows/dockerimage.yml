@@ -15,7 +15,7 @@ jobs:
     - name: JDK 16
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
-        ADDITIONAL_JDK_VERSION: 16.ea.18-open
+        ADDITIONAL_JDK_VERSION: 16.ea.19-open
       with:
         name: junitteam/build:16
         username: ${{ secrets.DOCKER_USERNAME }}
