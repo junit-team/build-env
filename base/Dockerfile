@@ -17,7 +17,7 @@ RUN apt-get update \
     && echo "sdkman_insecure_ssl=true" >> $SDKMAN_DIR/etc/config
 
 ARG JDK8_VERSION=8.0.265.hs-adpt
-ARG DEFAULT_JDK_VERSION=11.0.8.hs-adpt
+ARG DEFAULT_JDK_VERSION=15-open
 
 RUN bash -c ". $SDKMAN_DIR/bin/sdkman-init.sh \
     && sdk install java $JDK8_VERSION \
@@ -26,6 +26,5 @@ RUN bash -c ". $SDKMAN_DIR/bin/sdkman-init.sh \
     && sdk flush temp"
 
 ENV SDKMAN_CANDIDATES_DIR=$SDKMAN_DIR/candidates \
-    JDK8=$SDKMAN_DIR/candidates/java/$JDK8_VERSION \
     JAVA_HOME=$SDKMAN_DIR/candidates/java/$DEFAULT_JDK_VERSION \
     PATH="$JAVA_HOME/bin:${PATH}"

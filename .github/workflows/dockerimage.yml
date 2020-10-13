@@ -5,33 +5,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - name: JDK 11 (Default)
+    - name: JDK 15 (Default)
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       with:
         name: junitteam/build:latest
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         workdir: base
-    - name: JDK 14
-      uses: elgohr/Publish-Docker-Github-Action@cade1bc
-      env:
-        ADDITIONAL_JDK_VERSION: 14.0.2-open
-      with:
-        name: junitteam/build:14
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: extended
-        buildargs: ADDITIONAL_JDK_VERSION
-    - name: JDK 15
-      uses: elgohr/Publish-Docker-Github-Action@cade1bc
-      env:
-        ADDITIONAL_JDK_VERSION: 15-open
-      with:
-        name: junitteam/build:15
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: extended
-        buildargs: ADDITIONAL_JDK_VERSION
     - name: JDK 16
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
