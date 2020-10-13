@@ -1,4 +1,4 @@
-FROM junitteam/build
+FROM ghcr.io/junit-team/build
 
 ARG ADDITIONAL_JDK_VERSION
 
