@@ -24,3 +24,14 @@ jobs:
         password: ${{ secrets.CR_PAT }}
         workdir: extended
         buildargs: ADDITIONAL_JDK_VERSION
+    - name: JDK 17
+      uses: elgohr/Publish-Docker-Github-Action@cade1bc
+      env:
+        ADDITIONAL_JDK_VERSION: 17.ea.1-open
+      with:
+        name: junit-team/build:17
+        registry: ghcr.io
+        username: junit-buildmaster
+        password: ${{ secrets.CR_PAT }}
+        workdir: extended
+        buildargs: ADDITIONAL_JDK_VERSION
