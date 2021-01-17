@@ -16,7 +16,7 @@ jobs:
     - name: JDK 16
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
-        ADDITIONAL_JDK_VERSION: 16.ea.28-open
+        ADDITIONAL_JDK_VERSION: 16.ea.32-open
       with:
         name: junit-team/build:16
         registry: ghcr.io
@@ -27,7 +27,7 @@ jobs:
     - name: JDK 17
       uses: elgohr/Publish-Docker-Github-Action@cade1bc
       env:
-        ADDITIONAL_JDK_VERSION: 17.ea.1-open
+        ADDITIONAL_JDK_VERSION: 17.ea.5-open
       with:
         name: junit-team/build:17
         registry: ghcr.io
