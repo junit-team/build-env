@@ -16,8 +16,8 @@ RUN apt-get update \
     && echo "sdkman_auto_selfupdate=false" >> $SDKMAN_DIR/etc/config \
     && echo "sdkman_insecure_ssl=true" >> $SDKMAN_DIR/etc/config
 
-ARG JDK8_VERSION=8.0.275.hs-adpt
-ARG DEFAULT_JDK_VERSION=15.0.1-open
+ARG JDK8_VERSION=8.0.282.hs-adpt
+ARG DEFAULT_JDK_VERSION=15.0.2-open
 
 RUN bash -c ". $SDKMAN_DIR/bin/sdkman-init.sh \
     && sdk install java $JDK8_VERSION \
