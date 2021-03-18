@@ -6,15 +6,16 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Default JDKs
-      uses: elgohr/Publish-Docker-Github-Action@cade1bc2393f96033cac64022c128532abb92bd3
+      uses: elgohr/Publish-Docker-Github-Action@f7aca2fea76a5218f3c76cd5933c3ba1d8008774
       with:
-        name: junit-team/build:latest
+        name: junit-team/build
         registry: ghcr.io
         username: junit-buildmaster
         password: ${{ secrets.CR_PAT }}
         workdir: base
+        tags: "latest,16"
     - name: Plus JDK 17
-      uses: elgohr/Publish-Docker-Github-Action@cade1bc2393f96033cac64022c128532abb92bd3
+      uses: elgohr/Publish-Docker-Github-Action@f7aca2fea76a5218f3c76cd5933c3ba1d8008774
       env:
         ADDITIONAL_JDK_VERSION: 17.ea.13-open
       with:
