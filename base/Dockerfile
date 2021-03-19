@@ -17,13 +17,11 @@ RUN apt-get update \
     && echo "sdkman_insecure_ssl=true" >> $SDKMAN_DIR/etc/config
 
 ARG JDK8_VERSION=8.0.282.hs-adpt
-ARG JDK15_VERSION=15.0.2.hs-adpt
 ARG JDK16_VERSION=16.0.0.hs-adpt
 ARG DEFAULT_JDK_VERSION=11.0.10.hs-adpt
 
 RUN bash -c ". $SDKMAN_DIR/bin/sdkman-init.sh \
     && sdk install java $JDK8_VERSION \
-    && sdk install java $JDK15_VERSION \
     && sdk install java $JDK16_VERSION \
     && sdk install java $DEFAULT_JDK_VERSION \
     && sdk flush archives \
