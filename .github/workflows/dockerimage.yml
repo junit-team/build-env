@@ -13,7 +13,7 @@ jobs:
         username: junit-buildmaster
         password: ${{ secrets.CR_PAT }}
         workdir: base
-        tags: "latest,16"
+        tags: latest
     - name: Plus JDK 17
       uses: elgohr/Publish-Docker-Github-Action@f7aca2fea76a5218f3c76cd5933c3ba1d8008774
       env:
