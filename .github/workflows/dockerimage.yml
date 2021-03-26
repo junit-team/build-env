@@ -21,7 +21,7 @@ jobs:
       with:
         name: junit-team/build:17
         registry: ghcr.io
-        username: junit-buildmaster
-        password: ${{ secrets.CR_PAT }}
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
         workdir: extended
         buildargs: ADDITIONAL_JDK_VERSION
