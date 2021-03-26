@@ -4,24 +4,36 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Default JDKs
-      uses: elgohr/Publish-Docker-Github-Action@f7aca2fea76a5218f3c76cd5933c3ba1d8008774
+    - name: Set up Docker Buildx
+      id: buildx
+      uses: docker/setup-buildx-action@v1
+    - name: Cache Docker layers
+      uses: actions/cache@v2
       with:
-        name: junit-team/build
-        registry: ghcr.io
-        username: junit-buildmaster
-        password: ${{ secrets.CR_PAT }}
-        workdir: base
-        tags: latest
-    - name: Plus JDK 17
-      uses: elgohr/Publish-Docker-Github-Action@f7aca2fea76a5218f3c76cd5933c3ba1d8008774
-      env:
-        ADDITIONAL_JDK_VERSION: 17.ea.15-open
+        path: /tmp/.buildx-cache
+        key: ${{ runner.os }}-buildx-${{ github.sha }}
+        restore-keys: |
+          ${{ runner.os }}-buildx-
+    - name: Login to GitHub Container Registry
+      uses: docker/login-action@v1
       with:
-        name: junit-team/build:17
         registry: ghcr.io
         username: ${{ github.actor }}
         password: ${{ secrets.GITHUB_TOKEN }}
-        workdir: extended
-        buildargs: ADDITIONAL_JDK_VERSION
+    - name: Build and push (default JDKs)
+      uses: docker/build-push-action@v2
+      with:
+        file: base/Dockerfile
+        push: true
+        tags: ghcr.io/junit-team/build:latest
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache
+    - name: Build and push (plus JDK 17)
+      uses: docker/build-push-action@v2
+      with:
+        file: extended/Dockerfile
+        build-args: ADDITIONAL_JDK_VERSION=17.ea.15-open
+        push: true
+        tags: ghcr.io/junit-team/build:17
+        cache-from: type=local,src=/tmp/.buildx-cache
+        cache-to: type=local,dest=/tmp/.buildx-cache
