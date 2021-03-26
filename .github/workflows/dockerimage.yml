@@ -17,7 +17,7 @@ jobs:
     - name: Plus JDK 17
       uses: elgohr/Publish-Docker-Github-Action@f7aca2fea76a5218f3c76cd5933c3ba1d8008774
       env:
-        ADDITIONAL_JDK_VERSION: 17.ea.13-open
+        ADDITIONAL_JDK_VERSION: 17.ea.15-open
       with:
         name: junit-team/build:17
         registry: ghcr.io
