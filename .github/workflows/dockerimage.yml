@@ -23,6 +23,6 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         file: extended/Dockerfile
-        build-args: ADDITIONAL_JDK_VERSION=17.ea.15-open
+        build-args: ADDITIONAL_JDK_VERSION=17.ea.18-open
         push: true
         tags: ghcr.io/junit-team/build:17
